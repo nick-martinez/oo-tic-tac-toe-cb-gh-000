@@ -20,7 +20,7 @@ class TicTacToe
     return index
   end # end input_to_index
 
-  def move(index, character)
+  def move(index, character = "X")
     @board[index] = character
   end # end move
 
@@ -105,7 +105,7 @@ class TicTacToe
   end
 
   def full?
-    @board.all?{|square| square == "X" || square == "O"}
+    @board.all? {|square| square == "X" || square == "O"}
   end
 
   def draw?
