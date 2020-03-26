@@ -41,12 +41,15 @@ class TicTacToe
   end # end valid_move
 
   def current_player
-    if (turn_count % 2 == 0)
-      return "X"
+    #if the turn count is an even number, that means O just went, so the next/current player is X
+    num_turns = turn_count
+    if num_turns % 2 == 0
+      player = "X"
     else
-      return "O"
+      player = "O"
     end
-  end # End current_player
+    return player
+  end
 
   def turn
     puts "Please enter 1-9:"
