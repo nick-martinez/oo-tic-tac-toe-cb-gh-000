@@ -24,8 +24,8 @@ class TicTacToe
     @board[index] = character
   end # end move
 
-  def position_taken?(ind)
-    if (@board[ind] == " " || @board[ind] == "" || @board[ind] == nil)
+  def position_taken?(index)
+    if (@board[index] == " " || @board[index] == "" || @board[index] == nil)
       return false
     else
       return true
@@ -40,8 +40,8 @@ class TicTacToe
     end
   end # end on_board?
 
-  def valid_move?(board, index)
-    if (position_taken?(board, index)) == false && (on_board?(index) == true)
+  def valid_move?(index)
+    if (position_taken?(index)) == false && (on_board?(index) == true)
       return true
     else
       return false
