@@ -70,12 +70,12 @@ class TicTacToe
     end
   end # end turn
 
-  def turn_count(board)
+  def turn_count
     counter = 0
     square = 0
 
-    while (square < board.size)
-      if (board[square] != " " && board[square] != "" && board[square] != nil)
+    while (square < @board.size)
+      if (@board[square] != " " && @board[square] != "" && @board[square] != nil)
         counter += 1
       end
       square += 1
