@@ -83,19 +83,37 @@ class TicTacToe
   end
 
   def full?
-
+    @board.all?{|square| square == "X" || square == "O"}
   end
 
   def draw?
-
+    if (full? && !won?)
+      return true
+    else
+      return false
+    end
   end
 
   def over?
-
+    if (won? || draw?)
+      return true
+    else
+      return false
   end
 
   def winner
+    index = []
+    index = won?.@board
 
+    if (!index)
+      return false
+    else
+      if (@board.index[0] = "X")
+        return "X"
+      else
+        return "O"
+      end
+    end
   end
 
   def play
@@ -104,7 +122,7 @@ class TicTacToe
     end
 
     if (won?)
-      puts "Contratulations player #{}"
+      puts "Contratulations player #{winner}"
     elsif (draw?)
       puts "Cat's Eye!"
   end
