@@ -63,18 +63,14 @@ class TicTacToe
   end # end turn
 
   def turn_count
-    counter = 0
-    square = 0
-
-    while (square < @board.size)
-      if (@board[square] != " " && @board[square] != "" && @board[square] != nil)
-        counter += 1
+    turn = 0
+    @board.each do |index|
+      if index == "X" || index == "O"
+        turn += 1
       end
-      square += 1
     end
-
-    return counter
-  end # End turn_count
+    return turn
+  end
 
   def won?
     WIN_COMBINATIONS.each do |ttt_win|
