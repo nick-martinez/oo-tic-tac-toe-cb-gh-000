@@ -64,13 +64,22 @@ class TicTacToe
 
   def won?
     WIN_COMBINATIONS.each do |ttt_win|
-      win1 = WIN_COMBINATIONS[0]
-      win2 = WIN_COMBINATIONS[1]
-      win3 = WIN_COMBINATIONS[2]
+      win_1 = WIN_COMBINATIONS[0]
+      win_2 = WIN_COMBINATIONS[1]
+      win_3 = WIN_COMBINATIONS[2]
 
-      win_index1 = @board[win1]
-      win_index2 = @board[win2]
-      win_index3 = @board[win3]
+      position_1 = @board[win_1]
+      position_2 = @board[win_2]
+      position_3 = @board[win_3]
+
+      if (position_1 == "X" && position_2 == "X" && position_3 == "X")
+        return ttt_win
+      elsif (position_1 == "O" && position_2 == "O" && position_3 == "O")
+        return ttt_win
+      end
+    end
+  #else
+  return false
   end
 
   def full?
