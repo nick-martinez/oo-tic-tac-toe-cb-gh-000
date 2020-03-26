@@ -7,60 +7,82 @@ class TicTacToe
                       [0,3,6], [1,4,7], [2,5,8], # Col wins
                       [0,4,8], [2,4,6]] # Diagonal wins
 
-  def display_board(board)
-    puts " #{board[0]} | #{board[1]} | #{board[2]} "
+  def display_board
+    puts " #{@board[0]} | #{@board[1]} | #{@board[2]} "
     puts "-----------"
-    puts " #{board[3]} | #{board[4]} | #{board[5]} "
+    puts " #{@board[3]} | #{@board[4]} | #{@board[5]} "
     puts "-----------"
-    puts " #{board[6]} | #{board[7]} | #{board[8]} "
+    puts " #{@board[6]} | #{@board[7]} | #{@board[8]} "
   end
 
-  def input_to_index
-    @board.index_to.i -= 1
-    return @board.index
-  end
+  def input_to_index(input)
+    index = input.to_i - 1
+    return index
+  end # end input_to_index
 
-  def move
-    @board.input_to_index
-    @board.turn
-  end
+  def move(index, character)
+    @board[index] = character
+  end # end move
 
-  def position_taken?
-    if (@board.input_to_index != " " || @board.input_to_index != "" || @board.input_to_index != nil)
+  def position_taken?(ind)
+    if (@board[ind] == " " || @board[ind] == "" || @board[ind] == nil)
       return false
     else
       return true
     end
-  end
+  end # end position_taken?
 
-  def valid_move?
-    if (position_taken? == false && @board.input_to_index.between?(0,8) == true)
+  def on_board?(ind)
+    if (ind.between?(0,8) == true)
       return true
     else
       return false
     end
-  end
+  end # end on_board?
+
+  def valid_move?(board, index)
+    if (position_taken?(board, index)) == false && (on_board?(index) == true)
+      return true
+    else
+      return false
+    end
+  end # end valid_move
+
+  def current_player(board)
+    if (turn_count(board) % 2 == 0)
+      return "X"
+    else
+      return "O"
+    end
+  end # End current_player
 
   def turn
-    puts "Please enter 1-9: "
+    puts "Please enter 1-9:"
     input = gets.strip
     index = input_to_index(input)
 
-    if (valid_move?)
-      @board.move
-      @board.display_board
+    if valid_move?(board, index) == true
+      char = current_player(board)
+      move(index, char)
+      display_board
     else
-      turn
+      turn(board)
     end
-  end
+  end # end turn
 
-  def turn_count
-    @board.count{|token| token == "X" || token == "O"}
-  end
+  def turn_count(board)
+    counter = 0
+    square = 0
 
-  def current_player
-    turn_count % 2 == 0 ? "X" : "O"
-  end
+    while (square < board.size)
+      if (board[square] != " " && board[square] != "" && board[square] != nil)
+        counter += 1
+      end
+      square += 1
+    end
+
+    return counter
+  end # End turn_count
 
   def won?
     WIN_COMBINATIONS.each do |ttt_win|
