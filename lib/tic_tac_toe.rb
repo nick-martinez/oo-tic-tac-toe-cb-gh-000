@@ -130,7 +130,7 @@ class TicTacToe
       end
     end
     #else
-    return nil
+     #return nil
   end
 
   def play
