@@ -125,7 +125,7 @@ class TicTacToe
 
   def winner
     index = []
-    index = won?(@board)
+    index = won?
 
     if (!index)
       return false
