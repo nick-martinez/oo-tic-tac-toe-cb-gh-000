@@ -73,7 +73,7 @@ class TicTacToe
   end
 
   def won?
-    WIN_COMBINATIONS.each do|ttt_win|
+    WIN_COMBINATIONS.each do |ttt_win|
       win_1 = WIN_COMBINATIONS[0]
       win_2 = WIN_COMBINATIONS[1]
       win_3 = WIN_COMBINATIONS[2]
