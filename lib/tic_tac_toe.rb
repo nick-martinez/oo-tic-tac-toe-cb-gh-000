@@ -62,4 +62,42 @@ class TicTacToe
     turn_count % 2 == 0 ? "X" : "O"
   end
 
+  def won?
+    WIN_COMBINATIONS.each do |ttt_win|
+      win1 = WIN_COMBINATIONS[0]
+      win2 = WIN_COMBINATIONS[1]
+      win3 = WIN_COMBINATIONS[2]
+
+      win_index1 = @board[win1]
+      win_index2 = @board[win2]
+      win_index3 = @board[win3]
+  end
+
+  def full?
+
+  end
+
+  def draw?
+
+  end
+
+  def over?
+
+  end
+
+  def winner
+
+  end
+
+  def play
+    while (!over?)
+      turn
+    end
+
+    if (won?)
+      puts "Contratulations player #{}"
+    elsif (draw?)
+      puts "Cat's Eye!"
+  end
+
 end
