@@ -100,8 +100,8 @@ class TicTacToe
         return ttt_win
       end
     end
-  #else
-  return false
+    #else
+    return false
   end
 
   def full?
