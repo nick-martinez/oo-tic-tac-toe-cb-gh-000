@@ -121,7 +121,7 @@ class TicTacToe
     index = won?
 
     if (!index)
-      return false
+      return nil
     else
       if (@board[index[0]] == "X")
         return "X"
