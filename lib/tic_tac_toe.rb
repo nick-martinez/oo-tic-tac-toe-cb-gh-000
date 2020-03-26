@@ -40,16 +40,6 @@ class TicTacToe
     end
   end # end valid_move
 
-  def turn_count
-    turn = 0
-    @board.each do |index|
-      if index == "X" || index == "O"
-        turn += 1
-      end
-    end
-    return turn
-  end
-
   def current_player
     #if the turn count is an even number, that means O just went, so the next/current player is X
     num_turns = turn_count
@@ -62,25 +52,21 @@ class TicTacToe
     return player
   end
 
-  def turn
-    puts "Please enter 1-9:"
-    input = gets.strip
-    index = input_to_index(input)
-
-    if valid_move?(index)
-      char = current_player
-      move(index, char)
-      display_board
-    else
-      turn
+  def turn_count
+    turn = 0
+    @board.each do |index|
+      if index == "X" || index == "O"
+        turn += 1
+      end
     end
-  end # end turn
+    return turn
+  end
 
   def won?
     WIN_COMBINATIONS.each do |ttt_win|
-      win_1 = WIN_COMBINATIONS[0]
-      win_2 = WIN_COMBINATIONS[1]
-      win_3 = WIN_COMBINATIONS[2]
+      win_1 = ttt_win[0]
+      win_2 = ttt_win[1]
+      win_3 = ttt_win[2]
 
       position_1 = @board[win_1]
       position_2 = @board[win_2]
